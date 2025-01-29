@@ -1,33 +1,21 @@
-import express from "express";
+import { Elysia } from "elysia";
+import { swagger } from "@elysiajs/swagger";
 import { logger } from "./utils";
-import morgan from "morgan";
-import helmet from "helmet";
+import { PORT } from "./config";
+import { supplierRoutes } from "./modules/supplier/supplier.route";
 
-const app = express();
-const port = Bun.env.PORT || 8080;
+const app = new Elysia();
+const port = PORT || 8080;
 
 /**
  * Middlewares
  */
-app
-	// Morgan
-	.use(
-		morgan("tiny", {
-			stream: {
-				write: (message) => logger.info(message.trim()),
-			},
-		}),
-	)
-
-	// Helmet
-	.use(helmet());
+app.use(swagger());
 
 /**
  * Routes
  */
-app.get("/", (req, res) => {
-	res.send("Hello World!");
-});
+app.use(supplierRoutes);
 
 app.listen(port, () => {
 	logger.info(`Listening on port ${port}...`);

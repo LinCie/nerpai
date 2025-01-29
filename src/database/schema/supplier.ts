@@ -17,7 +17,7 @@ const supplierTable = mysqlTable("suppliers", {
 	status: mysqlEnum("status", ["active", "inactive"]).notNull(),
 	notes: text("notes"),
 	createdAt: timestamp("created_at").notNull().defaultNow(),
-	updatedAt: timestamp("updated_at").notNull().onUpdateNow(),
+	updatedAt: timestamp("updated_at").notNull().defaultNow().onUpdateNow(),
 	deletedAt: timestamp("deleted_at"),
 });
 
