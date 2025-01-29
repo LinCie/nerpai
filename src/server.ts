@@ -6,12 +6,10 @@ import helmet from "helmet";
 const app = express();
 const port = Bun.env.PORT || 8080;
 
+/**
+ * Middlewares
+ */
 app
-
-	/**
-	 * Middlewares
-	 */
-
 	// Morgan
 	.use(
 		morgan("tiny", {
@@ -22,20 +20,15 @@ app
 	)
 
 	// Helmet
-	.use(helmet())
+	.use(helmet());
 
-	/**
-	 * Routes
-	 */
+/**
+ * Routes
+ */
+app.get("/", (req, res) => {
+	res.send("Hello World!");
+});
 
-	.get("/", (req, res) => {
-		res.send("Hello World!");
-	})
-
-	/**
-	 * Listen command
-	 */
-
-	.listen(port, () => {
-		logger.info(`Listening on port ${port}...`);
-	});
+app.listen(port, () => {
+	logger.info(`Listening on port ${port}...`);
+});
