@@ -1,7 +1,7 @@
 export const apps = [
 	{
 		name: "nerpai",
-		cwd: "./dist",
+		cwd: "./.dist",
 		script: "./server",
 		exec_mode: "fork",
 		instances: 1,
