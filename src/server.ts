@@ -27,6 +27,7 @@ app
 	/**
 	 * Routes
 	 */
+
 	.get("/", (req, res) => {
 		res.send("Hello World!");
 	})
@@ -34,6 +35,7 @@ app
 	/**
 	 * Listen command
 	 */
+
 	.listen(port, () => {
 		logger.info(`Listening on port ${port}...`);
 	});
