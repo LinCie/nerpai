@@ -1,13 +1,13 @@
 export const apps = [
 	{
 		name: "nerpai",
-		cwd: "./.dist",
-		script: "./server",
-		exec_interpreter: "none",
-		exec_mode: "fork",
-		instances: 1,
-		autorestart: true,
+		script: ".dist/server.js",
+		interpreter: "bun",
+		env: {
+			PATH: `${process.env.HOME}/.bun/bin:${process.env.PATH}`,
+		},
 		watch: false,
+		autorestart: true,
 		max_memory_restart: "1024M",
 	},
 ];
